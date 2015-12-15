@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Moments</title>
+    {% load static %}
+    <link href='{% static 'bootstrap/dist/css/bootstrap-theme.min.css' %}' rel="stylesheet">
+    <link href='{% static 'bootstrap/dist/css/bootstrap.min.css' %}' rel="stylesheet">
+    <link href='{% static 'bootstrap-material-design/dist/css/bootstrap-material-design.min.css' %}' rel="stylesheet">
+    <script src='{% static 'jquery/dist/jquery.js' %}'></script>
+    <script src='{% static 'bootstrap/dist/js/bootstrap.min.js' %}'></script>
+    <script src='{% static 'bootstrap-material-design/dist/js/material.min.js' %}'></script>
+    <script src='{% static 'bootstrap-material-design/dist/js/ripples.min.js' %}'></script>
+    <link href='{% static 'bootstrap-material-design/dist/css/ripples.min.css' %}' rel="stylesheet">
+
+    <link href="{% static 'will/timeline/dist/css/component.css' %}" rel="stylesheet">
+    <link href='{% static 'will/timeline/dist/css/default.css' %}' rel="stylesheet">
+    <script type="text/javascript src='{% static 'timeline/dist/js/modernizr.custom.js' %}"></script>
+
+
+    <script>
+        $(function () {
+             $.material.init();
+          });
+    </script>
+
+
+</style>
+</head>
+<body>
+   		<div class="container">
+			<div class="main">
+				<ul class="cbp_tmtimeline">
+					{% if moments %}
+					{% for moment in moments %}
+					<li>
+						<time class="cbp_tmtime" datetime="{{ moment.create_date | date:"Y-m-d H:i"  }}"><span>{{ moment.create_date | date:"Y-m-d"  }}</span> <span>{{ moment.create_date | date:"H:i"  }}</span></time>
+						<div class="cbp_tmicon"></div>
+						<div class="cbp_tmlabel">
+							<p>{{ moment.moment_text }}</p>
+						</div>
+					</li>
+					{% endfor %}
+					{% endif%}
+					<li>
+						<time class="cbp_tmtime" datetime="2014-11-06 09:56"><span>4/17/13</span> <span>12:11</span></time>
+						<div class="cbp_tmicon"></div>
+						<div class="cbp_tmlabel">
+							<h2>Greens radish arugula</h2>
+							<p>Caulie dandelion maize lentil collard greens radish arugula sweet pepper water spinach kombu courgette lettuce. Celery coriander bitterleaf epazote radicchio shallot winter purslane collard greens spring onion squash lentil. Artichoke salad bamboo shoot black-eyed pea brussels sprout garlic kohlrabi.</p>
+						</div>
+					</li>
+					<li>
+						<time class="cbp_tmtime" datetime="2014-11-06 09:56"><span>4/18/13</span> <span>09:56</span></time>
+						<div class="cbp_tmicon"></div>
+						<div class="cbp_tmlabel">
+							<h2>Sprout garlic kohlrabi</h2>
+							<p>Parsnip lotus root celery yarrow seakale tomato collard greens tigernut epazote ricebean melon tomatillo soybean chicory broccoli beet greens peanut salad. Lotus root burdock bell pepper chickweed shallot groundnut pea sprouts welsh onion wattle seed pea salsify turnip scallion peanut arugula bamboo shoot onion swiss chard. Avocado tomato peanut soko amaranth grape fennel chickweed mung bean soybean endive squash beet greens carrot chicory green bean. Tigernut dandelion sea lettuce garlic daikon courgette celery maize parsley komatsuna black-eyed pea bell pepper aubergine cauliflower zucchini. Quandong pea chickweed tomatillo quandong cauliflower spinach water spinach.</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row" style="text-align:center" ><a href="{% url 'wills:create_moment' willid %}" class="btn btn-info btn-fab"><i class="material-icons">+</i></a>
+		</div>
+
+</div>
+</body>
+</html>
